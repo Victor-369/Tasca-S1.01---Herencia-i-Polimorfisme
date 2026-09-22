@@ -5,17 +5,14 @@ public class Editor {
     private final String id;
     private static float salary;
 
+
     public Editor(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public static void setSalary(float salary) {
-        Editor.salary = salary;
-    }
+    public String getId() { return id; }
 
-    public String getId() {
-        return id;
-    }
+    public static void setSalary(float salary) { Editor.salary = salary; }
 }
 

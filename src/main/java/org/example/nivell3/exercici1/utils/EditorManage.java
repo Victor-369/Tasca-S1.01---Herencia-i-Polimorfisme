@@ -21,7 +21,7 @@ public class EditorManage {
         return new Editor(id, name);
     }
 
-    public static void removeEditor(Scanner scanner, List<Editor> editors) {
+    public static void removeEditor(Scanner scanner, List<Editor> editors, List<News> news) {
         String id;
 
         System.out.print("Write editor's ID: ");
@@ -31,25 +31,33 @@ public class EditorManage {
                 .filter(e -> e.getId().equals(id))
                 .findFirst()
                 .ifPresentOrElse(
-                        editors::remove,
+                        e -> {
+                            List<News> newsToRemove = news.stream()
+                                    .filter(n -> n.getIdEditor().equals(id))
+                                    .toList();
+                            news.removeAll(newsToRemove);
+
+                            editors.remove(e);
+                            System.out.println("Editor deleted");
+                        },
                         () -> System.out.println("Editor doesn't exists")
                 );
     }
 
     public static void addStoryToEditor(Scanner scanner, List<News> news) {
+        System.out.print("Write ID of editor who wrote it: ");
+        String idEditor = scanner.nextLine();
+
         System.out.print("Choose type of news (Futbol, Bàsquet, Tenis, F1, Motociclisme): ");
         String typeNews = scanner.nextLine();
 
         System.out.print("Write title of news: ");
         String title = scanner.nextLine();
 
-        System.out.print("Write ID of editor: ");
-        String idEditor = scanner.nextLine();
-
         System.out.print("Write content of this news: ");
         String content = scanner.nextLine();
 
-        News newNews = new News(typeNews, title, idEditor);
+        News newNews = new News(typeNews, title, idEditor, content);
 
         news.add(newNews);
         System.out.println("News added");
@@ -66,7 +74,10 @@ public class EditorManage {
                 .filter(n -> n.getIdEditor().equals(idEditor) && n.getTitle().equals(newsTitle))
                 .findFirst()
                 .ifPresentOrElse(
-                        news::remove,
+                        n -> {
+                            news.remove(n);
+                            System.out.println("News deleted");
+                        },
                         () -> System.out.println("News does not exists")
                 );
     }
@@ -80,8 +91,11 @@ public class EditorManage {
                 .toList();
 
         for (News n : newsOfEditor) {
+            System.out.println("\n");
             System.out.println("Title: " + n.getTitle());
             System.out.println("Content: " + n.getContent());
+            System.out.println("Price: " + n.getPrice());
+            System.out.println("Score: " + n.getScore());
         }
     }
 }

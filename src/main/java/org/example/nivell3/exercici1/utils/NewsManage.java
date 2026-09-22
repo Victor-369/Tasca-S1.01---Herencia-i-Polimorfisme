@@ -17,7 +17,10 @@ public class NewsManage {
                 .filter(n -> n.getIdEditor().equals(idEditor) && n.getTitle().equals(title))
                 .findFirst()
                 .ifPresentOrElse(
-                        n -> calculatePrice(n),
+                        n -> {
+                            calculatePrice(n);
+                            System.out.println("Price calculated for \"" + n.getTitle() + "\": " + n.getPrice());
+                        },
                         () -> System.out.println("News does not exists")
                 );
     }
@@ -33,16 +36,17 @@ public class NewsManage {
                 .filter(n -> n.getIdEditor().equals(idEditor) && n.getTitle().equals(title))
                 .findFirst()
                 .ifPresentOrElse(
-                        n -> calculateScore(n),
+                        n -> {
+                            calculateScore(n);
+                            System.out.println("Score calculated for \"" + n.getTitle() + "\": " + n.getScore());
+                        },
                         () -> System.out.println("News does not exists")
                 );
     }
 
-
-
     public static void calculatePrice(News news) {
         String content = news.getContent();
-        float price = 0;
+        int price = 0;
 
         switch (news.getType()) {
             case "Futbol" -> {
@@ -80,7 +84,7 @@ public class NewsManage {
 
     public static void calculateScore(News news) {
         String content = news.getContent();
-        float score = 0;
+        int score = 0;
 
         switch (news.getType()) {
             case "Futbol" -> {

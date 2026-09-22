@@ -31,14 +31,47 @@ public class Menu {
             scanner.nextLine();                 // Avoids Scanner's problem about nextInt()
 
             switch (option) {
-                case 1 -> editors.add(EditorManage.fillEditorData(scanner));
-                case 2 -> EditorManage.removeEditor(scanner, editors);
-                case 3 -> EditorManage.addStoryToEditor(scanner, news);
-                case 4 -> EditorManage.removeStory(scanner, news);
-                case 5 -> EditorManage.showAllStoriesFromEditor(scanner, news);
-                case 6 -> NewsManage.getNewsToCalculateScore(scanner, news);
-                case 7 -> NewsManage.getNewsToCalculatePrice(scanner, news);
-                default -> System.out.println("Wrong option.");
+                case 1 -> {
+                    editors.add(EditorManage.fillEditorData(scanner));
+                    System.out.println("\n");
+                }
+
+                case 2 -> {
+                    EditorManage.removeEditor(scanner, editors, news);
+                    System.out.println("\n");
+                }
+
+                case 3 -> {
+                    EditorManage.addStoryToEditor(scanner, news);
+                    System.out.println("\n");
+                }
+
+                case 4 -> {
+                    EditorManage.removeStory(scanner, news);
+                    System.out.println("\n");
+                }
+
+                case 5 -> {
+                    EditorManage.showAllStoriesFromEditor(scanner, news);
+                    System.out.println("\n");
+                }
+
+                case 6 -> {
+                    NewsManage.getNewsToCalculateScore(scanner, news);
+                    System.out.println("\n");
+                }
+
+                case 7 -> {
+                    NewsManage.getNewsToCalculatePrice(scanner, news);
+                    System.out.println("\n");
+                }
+
+                case 0 -> System.out.println("Bye!");
+
+                default -> {
+                    System.out.println("Wrong option.");
+                    System.out.println("\n");
+                }
             }
 
         }

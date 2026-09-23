@@ -4,5 +4,10 @@ public abstract class Instrument {
     private String name;
     private Float price;
 
-    protected void play() {}
+    public Instrument(String name, float price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public abstract void play();
 }

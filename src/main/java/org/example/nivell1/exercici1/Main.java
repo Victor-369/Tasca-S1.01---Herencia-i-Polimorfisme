@@ -1,19 +1,21 @@
 package org.example.nivell1.exercici1;
 
+import org.example.nivell1.exercici1.models.Instrument;
 import org.example.nivell1.exercici1.models.PercussionInstrument;
 import org.example.nivell1.exercici1.models.StringInstrument;
 import org.example.nivell1.exercici1.models.WindInstrument;
 
 public class Main {
-    static void main() {
-        WindInstrument windInstrument = new WindInstrument();
-        windInstrument.play();
+    public static void main() {
+        Instrument[] instruments = {
+                new PercussionInstrument("Drum", 210),
+                new StringInstrument("Guitar", 300),
+                new WindInstrument("Flute", 130)
+        };
 
-        StringInstrument stringInstrument = new StringInstrument();
-        stringInstrument.play();
-
-        PercussionInstrument percussionInstrument = new PercussionInstrument();
-        percussionInstrument.play();
+        for (Instrument instrument : instruments) {
+            instrument.play();
+        }
     }
 
     static {

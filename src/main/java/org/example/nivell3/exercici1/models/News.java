@@ -12,8 +12,8 @@ public class News {
         this.typeNews = typeNews;
         this.title = title;
         this.content = content;
-        this.score = 0;             // Pending to fill, like a null
-        this.price = 0;             // Pending to fill, like a null
+        this.score = 0;
+        this.price = 0;
         this.idEditor = idEditor;
     }
 

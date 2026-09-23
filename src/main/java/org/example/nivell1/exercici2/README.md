@@ -1,23 +1,23 @@
-### Quin d’aquests atributs pot ser inicialitzat des del constructor?
+### Which of these attributes can be initialized from the constructor?
 - final int power.
-### Quin no es pot modificar mai?
+### Which one can never be modified?
 - static final String brand;
 - final int power.
-### Quin afecta totes les instàncies de la classe?
-- static String model (per ser `static`).
-- static final String brand (per ser `static`).
+### Which one affects all instances of the class?
+- static String model (because it's `static`).
+- static final String brand (because it's `static`).
 
-### Reflexió sobre els atributs
-- `brand` és `static final`, per tant pertany a la classe i no es pot modificar després de ser inicialitzat.
-- `model` és `static`, per tant és compartit per totes les instàncies de `Car`. Si canviem el seu valor, el canvi afecta tots els cotxes.
-- `power` és `final` però no és `static`, per tant cada instància té el seu propi valor. Es pot inicialitzar des del constructor però no modificar posteriorment.
+### Reflection on the attributes
+- `brand` is `static final`, so it belongs to the class and cannot be modified after being initialized.
+- `model` is `static`, so it's shared by all instances of `Car`. If we change its value, the change affects all cars.
+- `power` is `final` but not `static`, so each instance has its own value. It can be initialized from the constructor but not modified afterwards.
 
-### Comprovació
-He creat dues instàncies de `Car` amb diferents valors de `power`.
-`car1` té una potència de 150 i `car2` té una potència de 250, demostrant que `power` és diferent per a cada instància.
+### Verification
+I created two instances of `Car` with different values of `power`.
+`car1` has a power of 150 and `car2` has a power of 250, demonstrating that `power` is different for each instance.
 
-En canvi, `model` és `static`. Quan canvio: `Car.model = "Ferrari";` el nou valor és visible des de totes les instàncies. 
-Això demostra que `model` és compartit per tots els objectes de la classe.
+On the other hand, `model` is `static`. When I change: `Car.model = "Ferrari";` the new value is visible from all instances.
+This demonstrates that `model` is shared by all objects of the class.
 
-També he comprovat que el mètode estàtic `brake()` es pot cridar directament amb: `Car.brake();` sense necessitat de crear cap objecte.
-El mètode `accelerate()`, en canvi, és no estàtic i s'ha de cridar des d'una instància: `car1.accelerate();`
+I also verified that the static method `brake()` can be called directly with: `Car.brake();` without needing to create any object.
+The `accelerate()` method, on the other hand, is non-static and must be called from an instance: `car1.accelerate();`

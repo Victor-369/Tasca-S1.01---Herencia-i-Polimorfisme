@@ -1,12 +1,12 @@
-### Funcionalitats
-El programa permet:
-- Crear un telèfon amb una marca i un model.
-- Fer una trucada a un número de telèfon.
-- Fer una fotografia.
-- Activar una alarma.
-- Combinar herència i implementació d'interfícies en una mateixa classe.
+### Features
+The program allows you to:
+- Create a phone with a brand and a model.
+- Make a call to a phone number.
+- Take a photo.
+- Set an alarm.
+- Combine inheritance and interface implementation in the same class.
 
-### Estructura del projecte
+### Project structure
 ```Text
 src/main/java/org/example/nivell2/exercici1/
 ├── interfaces

@@ -1,16 +1,16 @@
-### Què és un bloc d’inicialització (sense static)?
-És un bloc de codi dins d’una classe que s’utilitza per inicialitzar els objectes quan es creen. No té cap nom ni necessita una paraula clau específica, simplement s’escriu entre { }.
-### Quan s’executa?
-S’executa cada vegada que es crea una nova instància de la classe, abans del constructor.
-### Quina diferència hi ha entre aquest i un bloc `static`?
+### What is an initialization block (without static)?
+It's a block of code within a class that is used to initialize objects when they are created. It has no name and doesn't need a specific keyword; it's simply written between { }.
+### When does it execute?
+It executes every time a new instance of the class is created, before the constructor.
+### What's the difference between this and a `static` block?
 
-| Bloc d’inicialització `{ }` | Bloc `static { }` |
+| Initialization block `{ }` | `static { }` block |
 |---|---|
-| Pertany a les instàncies de la classe. | Pertany a la classe. |
-| S’executa cada vegada que es crea un objecte. | S’executa una sola vegada quan s’inicialitza la classe. |
-| Pot accedir directament als atributs d’instància. | No pot accedir directament als atributs d’instància. |
-| S’executa abans del constructor. | S’executa durant la inicialització de la classe. |
+| Belongs to the class instances. | Belongs to the class. |
+| Executes every time an object is created. | Executes only once when the class is initialized. |
+| Can directly access instance attributes. | Cannot directly access instance attributes. |
+| Executes before the constructor. | Executes during class initialization. |
 
-### Resum
-- `{ }` → inicialitza **cada objecte**.
-- `static { }` → inicialitza **la classe una vegada**.
+### Summary
+- `{ }` → initializes **each object**.
+- `static { }` → initializes **the class once**.

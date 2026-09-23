@@ -1,7 +1,7 @@
 package org.example.nivell1.exercici2;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Car.brake();
 
         Car car1 = new Car(150);

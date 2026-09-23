@@ -31,3 +31,29 @@ nivell3/
 ```
 
 Note: removing an editor (option 2) also removes all of their news.
+
+### Why is `scanner.nextLine()` needed after `nextInt()` in Menu.java?
+
+When using Java's `Scanner`, `nextInt()` reads only the integer entered by the user, but it **does not consume the newline character (`\n`)** generated when the user presses Enter.
+
+For example:
+
+```java
+int option = scanner.nextInt();
+scanner.nextLine();
+```
+
+After nextInt(), the integer is consumed, but the newline remains in the Scanner input buffer.
+
+If we call nextLine() immediately afterwards, it consumes that remaining newline. This prevents the next nextLine() call from returning an empty string unexpectedly.
+
+In other words:
+
+```Java
+User enters:  1 + Enter
+
+nextInt()   → reads "1"
+nextLine()  → consumes the remaining "\n"
+```
+
+This is a common issue when mixing nextInt() (or other nextXxx() methods) with nextLine() in Java's Scanner.

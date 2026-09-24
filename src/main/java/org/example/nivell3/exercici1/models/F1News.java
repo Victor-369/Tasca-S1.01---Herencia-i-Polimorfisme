@@ -17,7 +17,7 @@ public class F1News extends News {
     @Override
     public void calculatePrice() {
         int price = 100;
-        if (team.contains("Ferrari") || team.contains("Mercedes")) price += 50;
+        if (team.equals("Ferrari") || team.equals("Mercedes")) price += 50;
 
         super.setPrice(price);
     }
@@ -25,7 +25,7 @@ public class F1News extends News {
     @Override
     public void calculateScore() {
         int score = 4;
-        if (team.contains("Ferrari") || team.contains("Mercedes")) score += 2;
+        if (team.equals("Ferrari") || team.equals("Mercedes")) score += 2;
 
         super.setScore(score);
     }

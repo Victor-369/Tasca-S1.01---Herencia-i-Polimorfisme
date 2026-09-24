@@ -91,9 +91,11 @@ public class Menu {
                         }
 
                         case 3 -> {
+                            System.out.print("Competition: ");
+                            String tennisCompetition = scanner.nextLine();
                             System.out.print("Player: ");
                             String player = scanner.nextLine();
-                            EditorService.addTennisToEditor(editors, dni, title, text, player);
+                            EditorService.addTennisToEditor(editors, dni, title, text, player, tennisCompetition);
                         }
 
                         case 4 -> {

@@ -1,12 +1,14 @@
 package org.example.nivell3.exercici1.models;
 
 public class TennisNews extends News {
+    private String competition;
     private String player;
 
 
-    public TennisNews(String title, String content, String player) {
+    public TennisNews(String title, String content, String player, String competition) {
         super(title, content);
 
+        this.competition = competition;
         this.player = player;
     }
 
@@ -17,7 +19,7 @@ public class TennisNews extends News {
     @Override
     public void calculatePrice() {
         int price = 150;
-        if (player.contains("Federer") || player.contains("Nadal") || player.contains("Djokovic")) price += 100;
+        if (player.equals("Federer") || player.equals("Nadal") || player.equals("Djokovic")) price += 100;
 
         super.setPrice(price);
     }
@@ -25,7 +27,7 @@ public class TennisNews extends News {
     @Override
     public void calculateScore() {
         int score = 4;
-        if (player.contains("Federer") || player.contains("Nadal") || player.contains("Djokovic")) score += 3;
+        if (player.equals("Federer") || player.equals("Nadal") || player.equals("Djokovic")) score += 3;
 
         super.setScore(score);
     }

@@ -17,7 +17,7 @@ public class MotorcyclingNews extends News {
     @Override
     public void calculatePrice() {
         int price = 100;
-        if (team.contains("Honda") || team.contains("Yamaha")) price += 50;
+        if (team.equals("Honda") || team.equals("Yamaha")) price += 50;
 
         super.setPrice(price);
     }
@@ -25,7 +25,7 @@ public class MotorcyclingNews extends News {
     @Override
     public void calculateScore() {
         int score = 3;
-        if (team.contains("Honda") || team.contains("Yamaha")) score += 2;
+        if (team.equals("Honda") || team.equals("Yamaha")) score += 2;
 
         super.setScore(score);
     }

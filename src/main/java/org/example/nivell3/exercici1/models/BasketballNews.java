@@ -23,8 +23,8 @@ public class BasketballNews extends News {
     @Override
     public void calculatePrice() {
         int price = 250;
-        if (competition.contains("Lliga de Campions")) price += 75;
-        if (club.contains("Barça") || club.contains("Madrid")) price += 75;
+        if (competition.equals("Eurolliga")) price += 75;
+        if (club.equals("Barça") || club.contains("Madrid")) price += 75;
 
         super.setPrice(price);
     }

@@ -47,8 +47,8 @@ public class EditorService {
     }
 
     public static void addTennisToEditor(List<Editor> editors, String dni,
-                                         String title, String text, String player) {
-        TennisNews tennisNews = NewsService.createTennisNews(title, text, player);
+                                         String title, String text, String player, String competition) {
+        TennisNews tennisNews = NewsService.createTennisNews(title, text, player, competition);
 
         addNewsToEditor(editors, dni, tennisNews);
     }

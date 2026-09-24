@@ -16,8 +16,8 @@ public class NewsService {
         return new BasketballNews(title, text, competition, club);
     }
 
-    public static TennisNews createTennisNews(String title, String text, String team) {
-        return new TennisNews(title, text, team);
+    public static TennisNews createTennisNews(String title, String text, String player, String competition) {
+        return new TennisNews(title, text, player, competition);
     }
 
     public static F1News createF1News(String title, String text, String team) {
@@ -50,7 +50,7 @@ public class NewsService {
                         .findFirst())
                 .map(news -> {
                     news.calculatePrice();
-                    return news.getScore();
+                    return news.getPrice();
                 });
     }
 }

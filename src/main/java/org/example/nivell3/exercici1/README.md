@@ -6,16 +6,20 @@ A simple Java console app to manage editors and sports news: add/remove editors,
 ```
 nivell3/
 └── exercici1/
-    ├── Main.java              # Entry point
+    ├── Main.java                   # Entry point
     ├── README.md
     ├── models/
-    │   ├── Editor.java        # Editor data
-    │   └── News.java          # News data
+    │   ├── Editor.java             # Editor data
+    │   ├── FootballNews.java       # Football data
+    │   ├── BasketballNews.java     # Basketball data
+    │   ├── TennisNews.java         # Tennis data
+    │   ├── F1News.java             # F1 data
+    │   └── MotorcyclingNews.java   # Motorcycling data
     ├── ui/
-    │   └── Menu.java          # Console menu
-    └── utils/
-        ├── EditorManage.java  # Add/remove editors, add/remove/list news linked with editor
-        └── NewsManage.java    # Search news and calculate price/score
+    │   └── Menu.java               # Console menu
+    └── services/
+        ├── EditorService.java      # Add/remove editors, add/remove/list news linked with editor
+        └── NewsService.java        # Search news and calculate price/score
 ```
 
 ## Menu options

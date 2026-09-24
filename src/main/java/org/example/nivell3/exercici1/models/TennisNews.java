@@ -15,6 +15,7 @@ public class TennisNews extends News {
     public void setPlayer(String player) {
         this.player = player;
     }
+    public void setCompetition(String competition) { this.competition = competition; }
 
     @Override
     public void calculatePrice() {

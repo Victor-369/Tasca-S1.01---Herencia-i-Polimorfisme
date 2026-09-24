@@ -24,7 +24,7 @@ public class BasketballNews extends News {
     public void calculatePrice() {
         int price = 250;
         if (competition.equals("Eurolliga")) price += 75;
-        if (club.equals("Barça") || club.contains("Madrid")) price += 75;
+        if (club.equals("Barça") || club.equals("Madrid")) price += 75;
 
         super.setPrice(price);
     }

@@ -2,20 +2,15 @@ package org.example.nivell3.exercici1.ui;
 
 import org.example.nivell3.exercici1.models.Editor;
 import org.example.nivell3.exercici1.models.News;
-import org.example.nivell3.exercici1.utils.EditorManage;
-import org.example.nivell3.exercici1.utils.NewsManage;
+import org.example.nivell3.exercici1.services.EditorService;
+import org.example.nivell3.exercici1.services.NewsService;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
-    private static Scanner scanner;
+    public static void showMenu(List<Editor> editors) {
+        Scanner scanner = new Scanner(System.in);
 
-    public Menu() {
-        scanner = new Scanner(System.in);
-    }
-
-    public void showMenu(List<Editor> editors, List<News> news) {
         int option = -1;
         while (option != 0) {
             System.out.println("1. Add editor");
@@ -28,41 +23,153 @@ public class Menu {
             System.out.println("0. Exit");
             System.out.print("Choose option: ");
             option = scanner.nextInt();
-            scanner.nextLine();                 // Avoids Scanner's problem about nextInt()
+            scanner.nextLine();
 
             switch (option) {
                 case 1 -> {
-                    editors.add(EditorManage.fillEditorData(scanner));
+                    System.out.print("Write editor's name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Write editor's DNI: ");
+                    String dni = scanner.nextLine();
+
+                    EditorService.addEditor(editors, new Editor(dni, name));
+
                     System.out.println("\n");
                 }
 
                 case 2 -> {
-                    EditorManage.removeEditor(scanner, editors, news);
+                    System.out.println("Write editor's DNI to delete: ");
+                    String dni = scanner.nextLine();
+
+                    EditorService.removeEditor(editors, dni);
+
                     System.out.println("\n");
                 }
 
                 case 3 -> {
-                    EditorManage.addStoryToEditor(scanner, news);
+                    System.out.print("Write title of news: ");
+                    String title = scanner.nextLine();
+
+                    System.out.print("Write content of this news: ");
+                    String text = scanner.nextLine();
+
+                    System.out.print("Write DNI of editor who wrote it: ");
+                    String dni = scanner.nextLine();
+
+                    System.out.print("\n");
+                    System.out.println("1. Football");
+                    System.out.println("2. Basketball");
+                    System.out.println("3. Tennis");
+                    System.out.println("4. F1");
+                    System.out.println("5. Motorcycling");
+                    System.out.print("Choose type of news: ");
+
+                    int optionTypeNews = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (optionTypeNews) {
+                        case 1 -> {
+                            System.out.print("Competition: ");
+                            String competition = scanner.nextLine();
+                            System.out.print("Club: ");
+                            String club = scanner.nextLine();
+                            System.out.print("Player: ");
+                            String player = scanner.nextLine();
+                            EditorService.addFootballNewsToEditor(editors, dni, title,
+                                    text, competition,
+                                    club, player);
+                        }
+
+                        case 2 -> {
+                            System.out.print("Competition: ");
+                            String competition = scanner.nextLine();
+                            System.out.print("Club: ");
+                            String club = scanner.nextLine();
+                            EditorService.addBasketballToEditor(editors, dni, title,
+                                    text, competition,
+                                    club);
+                        }
+
+                        case 3 -> {
+                            System.out.print("Player: ");
+                            String player = scanner.nextLine();
+                            EditorService.addTennisToEditor(editors, dni, title, text, player);
+                        }
+
+                        case 4 -> {
+                            System.out.print("Team: ");
+                            String team = scanner.nextLine();
+                            EditorService.addF1ToEditor(editors, dni, title, text, team);
+                        }
+
+                        case 5 -> {
+                            System.out.print("Team: ");
+                            String team = scanner.nextLine();
+                            EditorService.addMotorcyclingToEditor(editors, dni, title, text, team);
+                        }
+                    }
+
                     System.out.println("\n");
                 }
 
                 case 4 -> {
-                    EditorManage.removeStory(scanner, news);
+                    System.out.print("Write DNI of editor: ");
+                    String dni = scanner.nextLine();
+
+                    System.out.print("Write title of news: ");
+                    String title = scanner.nextLine();
+
+                    EditorService.removeStory(editors, dni, title);
+
                     System.out.println("\n");
                 }
 
                 case 5 -> {
-                    EditorManage.showAllStoriesFromEditor(scanner, news);
+                    System.out.print("Write ID of editor: ");
+                    String dni = scanner.nextLine();
+
+                    List<News> newsOfEditor = EditorService.getAllStoriesFromEditor(editors, dni);
+
+                    for (News n : newsOfEditor) {
+                        System.out.println("\n");
+                        System.out.println("Title: " + n.getTitle());
+                        System.out.println("Text: " + n.getText());
+                        System.out.println("Price: " + n.getPrice());
+                        System.out.println("Score: " + n.getScore());
+                    }
+
                     System.out.println("\n");
                 }
 
                 case 6 -> {
-                    NewsManage.getNewsToCalculateScore(scanner, news);
+                    System.out.print("Write ID of editor: ");
+                    String dni = scanner.nextLine();
+
+                    System.out.print("Write title of news to calculate score: ");
+                    String title = scanner.nextLine();
+
+                    Optional<Integer> score = NewsService.calculateNewsScore(editors, dni, title);
+                    score.ifPresentOrElse(
+                            s -> System.out.println("Score: " + s),
+                            () -> System.out.println("Editor or news not found.")
+                    );
+
                     System.out.println("\n");
                 }
 
                 case 7 -> {
-                    NewsManage.getNewsToCalculatePrice(scanner, news);
+                    System.out.print("Write ID of editor: ");
+                    String dni = scanner.nextLine();
+
+                    System.out.print("Write title of news to calculate score: ");
+                    String title = scanner.nextLine();
+
+                    Optional<Integer> score = NewsService.calculateNewsPrice(editors, dni, title);
+                    score.ifPresentOrElse(
+                            s -> System.out.println("Price: " + s),
+                            () -> System.out.println("Editor or news not found.")
+                    );
+
                     System.out.println("\n");
                 }
 

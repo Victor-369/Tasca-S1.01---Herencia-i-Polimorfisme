@@ -8,6 +8,8 @@ public class Smartphone extends Phone implements Camera, Clock {
         super(brand, model);
     }
 
+    @Override
     public void takePicture() { System.out.println("Taking a picture"); }
+    @Override
     public void triggerAlarm() { System.out.println("Triggering alarm"); }
 }

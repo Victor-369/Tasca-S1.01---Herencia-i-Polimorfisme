@@ -8,7 +8,7 @@ public class Main {
         Smartphone smartphone = new Smartphone("Nokia", "6410");
 
         Phone phone = smartphone;
-        phone.call(786453211);
+        phone.call("786453211");
 
         Camera camera = smartphone;
         camera.takePicture();

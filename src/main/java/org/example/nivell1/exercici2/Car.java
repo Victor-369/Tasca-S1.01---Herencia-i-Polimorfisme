@@ -1,7 +1,7 @@
 package org.example.nivell1.exercici2;
 
 public class Car {
-    static final String brand = "Mustang";
+    static final String BRAND = "Mustang";
     static String model;
     final int power;
 

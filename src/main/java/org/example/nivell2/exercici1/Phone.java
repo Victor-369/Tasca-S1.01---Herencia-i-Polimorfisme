@@ -9,7 +9,7 @@ public class Phone {
         this.model = model;
     }
 
-    public void call(int number) {
+    public void call(String number) {
         System.out.println("Calling to " + number);
     }
 }
